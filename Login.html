@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <h1 class="text-center mt-5" >Employee Login</h1>
+    <form class="mainContainer mt-4" id="Login" action="servlet2" method="get">
+        <div class="headingsContainer">
+            <h3>Sign in</h3>
+            <p>Sign in with your Email and password</p>
+        </div>
+        <div class="form-group">
+            <label for="useremail">UserEmail</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter Useremail" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="pswrd">Password</label>
+            <input type="password" class="form-control" id="pswrd" placeholder="Enter Password" name="password" required>
+        </div>
+        <div class="subcontainer">
+            <p class="forgotpsd"><a href="#">Forgot Password?</a></p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <p class="register">New employee? <a href="SignUp.html">Register here!</a></p>
+    </form>
+    <script>
+      
+        
+       document.getElementById("Login").addEventListener("submit", function (event) {
+         
+         const email = document.getElementById("inputEmail").value;
+   
+         if (!validateEmail(email)) {
+           alert("Email is not valid");
+           event.preventDefault();
+         }
+       });
+   
+       function validateEmail(email) {
+         const regex = /^[a-zA-Z0-9._-]+@gmail\.com$/;
+         return regex.test(email);
+       }
+       history.pushState(null, null, location.href);
+      window.onpopstate = function () {
+          history.go(1);
+      }
+
+      
+     </script>
+</body>
+</html>
